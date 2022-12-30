@@ -1,0 +1,23 @@
+leetcode 11. Container With Most Water
+class Solution {
+    public int maxArea(int[] height) {
+        
+        int maxA=0,l=0,r=height.length-1;
+        int minH,area;
+        while(l<r)
+        {
+            minH=Math.min(height[l],height[r]);
+            area=minH*(r-l);
+            maxA=Math.max(maxA,area);
+            if(height[l]<height[r])
+                l++;
+            else
+                r--;
+        }
+    return maxA;
+    }
+}
+
+//here two pointers are taken as left and right , using math function then the minimum of two is found as if we choose max then water will spill out,
+after that the distance between these 2 is calculated , then the area inclosed by this is calculated ; which is compared with other area for finding max area.
+we shift the pointer in order to get max area.
