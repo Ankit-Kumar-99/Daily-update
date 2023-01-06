@@ -1,0 +1,30 @@
+QUESTION
+205. Isomorphic Strings
+
+SOLUTION
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        HashMap <Character,Character> match=new HashMap<>();
+        HashMap <Character,Boolean> present=new HashMap<>();
+        for(int i=0;i<s.length();i++)
+        {
+            if(match.containsKey(s.charAt(i)))
+            {
+                if(match.get(s.charAt(i))!=t.charAt(i))
+                    return false;
+            }
+            else{
+                if(present.containsKey(t.charAt(i)))
+                    return false;
+                match.put(s.charAt(i),t.charAt(i));
+                present.put(t.charAt(i),true);
+            }
+        }
+    return true;
+    }
+}
+
+In this question 2 hashmap is ctreated which contains the mapping of alphabet in string S with that of T. first we check if the current pointer character is present in 
+the hashmap or not,ifthere we find its corrosponding value for the key, if the value matches to the character of the string T for the same index then its okay otherwise
+we return false. If character is not present then we check for the presence of the ith index of T for presence in 2nd hashmap, if its present we return false. Otherwise 
+we push values in hashmap.
